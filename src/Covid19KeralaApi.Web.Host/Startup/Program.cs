@@ -16,6 +16,10 @@ namespace Covid19KeralaApi.Web.Host.Startup
         {
             return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                /*.UseKestrel(options =>
+                {
+                    options.ListenAnyIP(Int32.Parse(System.Environment.GetEnvironmentVariable("PORT")));
+                })*/
                 .Build();
         }
     }
