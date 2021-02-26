@@ -7,12 +7,12 @@ namespace Covid19KeralaApi.EntityFrameworkCore
     {
         public static void Configure(DbContextOptionsBuilder<Covid19KeralaApiDbContext> builder, string connectionString)
         {
-            builder.UseSqlServer(connectionString);
+            builder.UseNpgsql(connectionString);
         }
 
         public static void Configure(DbContextOptionsBuilder<Covid19KeralaApiDbContext> builder, DbConnection connection)
         {
-            builder.UseSqlServer(connection);
+            builder.UseNpgsql(connection);
         }
     }
 }

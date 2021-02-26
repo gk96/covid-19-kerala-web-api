@@ -3,6 +3,7 @@ using Abp.Zero.EntityFrameworkCore;
 using Covid19KeralaApi.Authorization.Roles;
 using Covid19KeralaApi.Authorization.Users;
 using Covid19KeralaApi.MultiTenancy;
+using Covid19KeralaApi.DistrictCounts;
 
 namespace Covid19KeralaApi.EntityFrameworkCore
 {
@@ -14,5 +15,6 @@ namespace Covid19KeralaApi.EntityFrameworkCore
             : base(options)
         {
         }
+        public DbSet<DistrictCount> DistrictCounts { get; set; }
     }
 }
