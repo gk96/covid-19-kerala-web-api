@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.IO;
 
 namespace Covid19KeralaApi.Web.Host.Startup
@@ -14,13 +15,24 @@ namespace Covid19KeralaApi.Web.Host.Startup
 
         public static IWebHost BuildWebHost(string[] args)
         {
-            return WebHost.CreateDefaultBuilder(args)
+
+            if (System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") != null )
+            {
+                return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                /*.UseKestrel(options =>
-                {
-                    options.ListenAnyIP(Int32.Parse(System.Environment.GetEnvironmentVariable("PORT")));
-                })*/
                 .Build();
+            }
+
+            else
+            {
+                return WebHost.CreateDefaultBuilder(args)
+                    .UseStartup<Startup>()
+                    .UseKestrel(options =>
+                    {
+                        options.ListenAnyIP(Int32.Parse(System.Environment.GetEnvironmentVariable("PORT")));
+                    })
+                    .Build();
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Covid19KeralaApi.Controllers
 {
     //[AbpAuthorize]
-    //[DontWrapResult]
+    [DontWrapResult]
     [Route("api/[controller]/[action]")]
     public class DistrictCountController : Covid19KeralaApiControllerBase
     {
@@ -26,7 +26,7 @@ namespace Covid19KeralaApi.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(DistrictCountDto), 200)]
         [ProducesResponseType(typeof(ErrorInfo), 500)]
-        //[DontWrapResult]
+        [DontWrapResult]
         public async Task<IActionResult> GetAll([FromBody] DistrictCountRequestDto request)
         {
             Logger.Info("Enter DistrictCountController - GetAll");
@@ -38,7 +38,7 @@ namespace Covid19KeralaApi.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(DistrictCountDto), 200)]
         [ProducesResponseType(typeof(ErrorInfo), 500)]
-        //[DontWrapResult]
+        [DontWrapResult]
         public async Task<IActionResult> GetByDate(string date)
         {
             Logger.Info("Enter DistrictCountController - GetByDate");
